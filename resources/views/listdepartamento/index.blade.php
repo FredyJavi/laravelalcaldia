@@ -1,3 +1,7 @@
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -12,7 +16,7 @@
                 <h2 class="mt-2 text-xl text-center text text-gray-800 font-semibold">Listado Empleados</h2>
                 <div class="col-12">
                     <!-- -->
-                    <table class="table">
+                    <table id="example" class="table table-striped" style="width:100%">
                         <thead class="thead-dark">
                           <tr>
                             <th scope="col">Identificacion</th>
@@ -39,9 +43,20 @@
                             <td><a href="" class="btn btn-danger">
                                 <i class="bi bi-pencil"></i> Eliminar
                             </a></td>
+
                           </tr>
                           @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th scope="col">Identificacion</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Secretaria</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </tfoot>
                       </table>
 
                 </div>
@@ -49,5 +64,25 @@
         </div>
     </div>
 </x-app-layout>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
 
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            responsive: true,
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+    </script>
 
